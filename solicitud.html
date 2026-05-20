@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitar | BuenSabor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="inicio">
+  <header class="site-header">
+    <div class="brand-bar">
+      <div class="brand-logo">BuenSabor</div>
+      <nav class="main-nav">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="index.html#menu">Menú</a>
+        <a href="index.html#catering">Catering</a>
+        <a href="index.html#nosotros">Nosotros</a>
+        <a href="solicitud.html">Solicitar</a>
+      </nav>
+      <a href="solicitud.html" class="btn btn-primary">Solicitar</a>
+    </div>
+  </header>
+
+  <main class="section section--form">
+    <div class="section-header">
+      <span class="eyebrow">Solicitud de servicio</span>
+      <h2>Reserva tu mesa o elige catering para tu evento</h2>
+      <p>Completa el formulario con los datos de tu evento y te contactaremos rápidamente para confirmar la reserva.</p>
+    </div>
+    <form id="requestForm" class="booking-form">
+      <div class="field-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
+      </div>
+      <div class="field-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required />
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="tipo">Tipo de servicio</label>
+          <select id="tipo" name="tipo" required>
+            <option value="mesa">Reserva de mesa</option>
+            <option value="catering">Servicio de catering</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="personas">Personas / invitados</label>
+          <input type="number" id="personas" name="personas" min="1" value="2" required />
+        </div>
+        <div class="field-group">
+          <label for="mensaje">Detalles / solicitud</label>
+          <input type="text" id="mensaje" name="mensaje" placeholder="Celebración, alergias, menú especial" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Enviar solicitud</button>
+      <p id="formMessage" class="form-message" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="brand-logo-footer">BuenSabor</div>
+        <p>Restaurante y catering con pasión por los detalles.</p>
+      </div>
+      <div>
+        <h4>Horarios</h4>
+        <p>Salón: Lun-Dom 12:00 - 23:00</p>
+        <p>Catering: Lun-Dom 08:00 - 22:00</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>Email: contacto@buensabor.com</p>
+        <p>Tel: +54 11 5555 1234</p>
+        <p>WhatsApp: +54 9 11 5555 1234</p>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <p>Instagram | Facebook | TikTok</p>
+      </div>
+    </div>
+    <p class="copyright">BuenSabor © 2026</p>
+  </footer>
+
+  <script src="java.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+1-creame una pagina web con estilos modernos y unicos sobre este local "BuenSabor" combina la experiencia de un restaurante presencial con un servicio de catering a
+domicilio para todo tipo de eventos. El sitio web debe despertar el apetito del visitante, comunicar
+la propuesta gastronomica y permitir que los clientes realicen solicitudes de reserva de mesa o de
+catering de forma sencilla.
+
+2-necesito que agreges estos siguientes requisitos Contenido Requerido
+Barra de Navegacion
+
+Nombre o logo del restaurante a la izquierda.
+Links de navegacion: Inicio, Menu, Catering, Nosotros y Solicitar.
+El link "Solicitar" debe apuntar a solicitud.html (pagina que se creara en la Etapa 2).
+Seccion Hero (encabezado principal)
+Imagen de fondo de un plato o ambiente del restaurante.
+Titulo principal con el nombre del restaurante (etiqueta h1).
+Slogan o frase que despierte el apetito del visitante.
+Dos botones de llamada a la accion: "Ver menu" (que lleve a la seccion de menu en la
+misma pagina) y "Solicitar reserva o catering" (que lleve a solicitud.html).
+Seccion Menu Destacado (minimo 6 platos)
+Mostrar los platos mas representativos del restaurante en formato de tarjetas organizadas por
+categoria. Las categorias sugeridas son:
+Entradas
+Platos principales
+Postres
+Cada tarjeta debe incluir:
+a) Imagen del plato.
+b) Nombre del plato.
+c) Descripcion breve de los ingredientes principales.
+d) Precio (ficticio).
+e) Etiquetas de restriccion alimentaria si aplica: "Vegano", "Sin TACC", "Sin lactosa" (pueden
+ser badges de texto o iconos).
+Las tarjetas deben organizarse en una grilla de al menos dos columnas en pantallas de escritorio
+usando CSS Grid o Flexbox.
+Seccion Servicios de Catering (minimo 4 tipos de evento)
+Mostrar los eventos para los que BuenSabor ofrece servicio de catering. Ejemplos:
+Casamientos y fiestas de 15 anos
+Eventos corporativos y reuniones de empresa
+Cumpleanos y celebraciones familiares
+Desayunos y coffee breaks
+Cada tipo de evento: imagen o icono, nombre, descripcion breve y capacidad aproximada de
+comensales.
+Evaluacion Sumativa 2 | Desarrollo Web HTML & JS Restaurante y Catering BuenSabor
+Programacion Web | Pagina 5
+Seccion Nuestro Chef
+Foto (puede ser un avatar), nombre, trayectoria y especialidad culinaria del chef principal.
+Opcionalmente incluir uno o dos sous chefs con el mismo formato.
+Seccion Testimonios (minimo 3)
+Nombre del cliente, tipo de evento o visita, texto del comentario y calificacion.
+Footer
+Nombre y logo del restaurante.
+Horarios de atencion del salon y del servicio de catering.
+Direccion y datos de contacto ficticios: email, telefono y WhatsApp.
+Links a redes sociales (pueden ser placeholders).
+Ano de copyright.
+1.4 Requisitos de Estilo
+Paleta de colores que transmita calidez y apetito (bordo, dorado, crema, blanco). Definir al
+menos tres colores como variables CSS.
+Minimo dos tipografias: una elegante para titulos y otra legible para el cuerpo. Pueden
+usarse tipografias de Google Fonts.
+Las tarjetas del menu y de catering deben tener efecto hover con transicion suave.
+El hero debe incluir una superposicion semitransparente sobre la imagen para garantizar la
+legibilidad del texto.
+El sitio debe adaptarse a pantallas moviles: los elementos se apilan en una sola columna.
+
+
+3-y luego le fui pidiendo que agrege imagenes y yo le fui pasando las url
