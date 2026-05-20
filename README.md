@@ -10,7 +10,7 @@ Este proyecto contiene una landing page moderna para el restaurante y servicio d
 - `java.js`: lógica de validación del formulario y mensaje de confirmación.
 
 ## Cambios recientes
-
+- Se agregó un logo en el hero de `index.html` sobre el texto "Restaurante y catering para tus mejores momentos".
 - Se actualizó la imagen del tiramisú en la sección de menú.
 - Se agregó la imagen proporcionada para la tarjeta de "Casamientos y fiestas de 15 años" en la sección de catering.
 - Se agregó la imagen proporcionada para la tarjeta de "Eventos corporativos" en la sección de catering.
@@ -27,3 +27,4 @@ Este proyecto contiene una landing page moderna para el restaurante y servicio d
   - Estilo y accesibilidad: campos con foco visual definido, clases `campo-error` y `campo-ok` preparadas, formulario centrado con ancho máximo de 750px, diseño responsive, etiquetas `label` correctamente asociadas, y `fieldset`/`legend` para grupos de opciones.
 - Se implementó el formulario avanzado en `solicitud.html` con cuatro secciones, campos condicionales para catering, opciones de restricciones y bebidas, contadores de caracteres, confirmación de correo, botones de enviar/limpiar y enlace a `index.html`.
 - Se añadió `validaciones.js` para validar el formulario de `solicitud.html` según las reglas de Sección A-D, mostrar retroalimentación visual inmediata, sumarizar errores y presentar una pantalla de confirmación con número de solicitud.
+
