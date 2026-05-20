@@ -1,73 +1,83 @@
-agrega esto solo si no lo tiene la pagina web y recuerda que todos los cambios que hagas anda colocandolos en el README.md
+agrega las validaciones de js a la pagina web y agrega todos los cambios al README.md
 
-Contenido del Formulario
-El formulario debe estar dividido en cuatro secciones claramente diferenciadas de forma visual, con
-titulos de seccion que indiquen al usuario donde se encuentra.
+ahora necesito agregar esto Agregar el archivo validaciones.js que intercepte el envio del formulario, aplique todas las reglas de
+validacion y proporcione retroalimentacion visual inmediata. Si el formulario pasa todas las
+validaciones, debe mostrarse una pantalla de confirmacion de solicitud.
+
+Reglas de Validacion Requeridas
 Seccion A — Tipo de Solicitud y Datos del Evento
+Campo Regla
+Tipo de solicitud Debe seleccionarse una opcion (reserva o catering).
+Fecha del evento No puede ser una fecha pasada. Para reservas de mesa: al menos 48
+horas desde ahora. Para catering externo: al menos 7 dias desde
+ahora.
+Hora de inicio Para reservas de salon: solo se aceptan horarios entre las 12:00 y las
+23:00.
+Nombre del evento Si el tipo de solicitud es catering externo, este campo no puede estar
+vacio. Minimo 5 caracteres.
+Tipo de evento (catering) Si el tipo es catering, debe seleccionarse una opcion valida. Si se
+elige "Otro", el campo de texto adicional no puede estar vacio.
+Lugar del evento Si el tipo es catering externo, no puede estar vacio. Minimo 10
+caracteres.
 
-Tipo de solicitud (radio buttons: Reserva de mesa en el salon, Servicio de catering externo).
-La seleccion de este campo determina que campos adicionales se muestran en la Seccion
-B.
-Fecha del evento o reserva (input date, requerido).
-Hora de inicio (input time, requerido).
-Duracion estimada del evento (select: 1 hora, 2 horas, 3 horas, 4 horas o mas). Solo visible
-si se elige catering externo.
-Nombre o descripcion del evento (input text, requerido solo para catering): ejemplo
-"Cumpleanos de 50", "Reunion anual de empresa".
-Tipo de evento (select, solo para catering: Casamiento, Cumpleanos, Evento corporativo,
-Desayuno o coffee break, Otro). Si se elige "Otro", mostrar campo de texto adicional.
-Lugar del evento (input text, requerido solo para catering): direccion donde se realizara el
-servicio.
-Seccion B — Datos de los Comensales
-Cantidad de adultos (input number, minimo 1, maximo 200, requerido).
-Cantidad de menores (input number, minimo 0, maximo 50).
-Restricciones alimentarias presentes (checkboxes multiples): Vegetarianos, Veganos, Sin
-TACC (celiacos), Sin lactosa, Alergias a frutos secos, Otras.
-Si se marca "Otras", mostrar un textarea para detallarlas (maximo 200 caracteres, con
-contador).
-El grupo necesita menu infantil (checkbox). Si esta marcado, mostrar campo numerico para
-indicar la cantidad.
-Seccion C — Datos del Cliente y Preferencias
-Nombre completo (input text, requerido).
-Correo electronico (input email, requerido).
-Confirmar correo electronico (input email, requerido).
-Telefono de contacto (input tel, requerido).
-Tipo de menu preferido (select: Menu degustacion, Menu clasico, Menu infantil
-predominante, A definir con el chef).
-Bebidas incluidas (checkboxes: Agua, Gaseosas, Vinos, Champagne, Sin alcohol). Al
-menos una debe seleccionarse.
-Necesita servicio de mozos (checkbox, solo para catering externo).
-Necesita mobiliario: mesas y sillas (checkbox, solo para catering externo).
-Como nos conocio (select: Redes sociales, Recomendacion, Busqueda web, Fue cliente
-antes, Otro).
+Seccion B — Comensales y Restricciones
+Campo Regla
+Cantidad de adultos Minimo 1. Para reservas de salon: maximo 20 por reserva online.
+Para catering: maximo 200. Solo numeros enteros.
+Cantidad de menores Minimo 0, maximo 50. No puede superar la cantidad de adultos.
+Textarea de alergias Si el checkbox "Otras" restricciones esta marcado, el textarea no
+puede estar vacio y no puede superar los 200 caracteres.
+Cantidad de menus infantiles Si el checkbox de menu infantil esta marcado, el campo de cantidad
+debe ser un numero entre 1 y la cantidad de menores ingresada.
+
+Seccion C — Datos del Cliente
+Campo Regla
+Nombre completo Solo letras y espacios. Minimo 5 caracteres, maximo 80.
+Correo electronico Formato valido con @ y dominio. Usar expresion regular.
+Confirmar correo Debe coincidir exactamente con el campo de correo electronico Telefono Solo digitos, guiones, espacios y signo mas (+). Minimo 8 digitos
+numericos.
+Bebidas incluidas Al menos una opcion debe estar marcada.
+Tipo de menu Seleccion obligatoria (no el placeholder).
+
+Seccion D — Confirmacion
+
+El textarea de observaciones no debe superar los 350 caracteres. Validar al enviar ademas
+del contador en tiempo real.
+Los tres checkboxes obligatorios (contacto, terminos y privacidad) deben estar marcados.
+Mostrar un mensaje especifico para cada uno que falte.
+Comportamiento de la Interfaz
+Campos Condicionales
+
+Al elegir "Reserva de mesa": ocultar los campos de duracion, nombre del evento, tipo de
+evento, lugar del evento, servicio de mozos y mobiliario. Mostrarlos al elegir "Catering
+externo".
+Al marcar "Otras" restricciones alimentarias: mostrar el textarea de detalle. Ocultarlo y
+vaciarlo si se desmarca.
+Al marcar "Menu infantil": mostrar el campo de cantidad. Ocultarlo y vaciarlo si se
+desmarca.
+Al elegir "Otro" en tipo de evento: mostrar el campo de texto adicional.
+Todos estos campos condicionales deben validarse unicamente cuando esten visibles.
+Retroalimentacion Visual por Campo
+Error: agregar la clase "campo-error" (borde rojo); mostrar mensaje descriptivo debajo del
+campo generado por JavaScript.
+Correccion: remover "campo-error", agregar "campo-ok" (borde verde); ocultar el mensaje
+de error.
+Funcionalidades en Tiempo Real
+Contador de caracteres en ambos textareas: actualizar en tiempo real. Naranja al superar el
+80% del limite; rojo al alcanzar el maximo.
+Al cambiar el tipo de solicitud (radio buttons): mostrar u ocultar los campos
+correspondientes de forma inmediata y limpiar los valores de los campos que se ocultan.
+Comportamiento al Enviar
+Usar preventDefault() para impedir el envio si hay errores.
+Recorrer todos los campos visibles y aplicar validaciones en orden.
+Hacer scroll automatico al primer campo con error usando scrollIntoView().
+Mostrar un resumen al inicio del formulario con la cantidad total de errores encontrados.
+Pantalla de Confirmacion
 Evaluacion Sumativa 2 | Desarrollo Web HTML & JS Restaurante y Catering BuenSabor
-Programacion Web | Pagina 7
-Seccion D — Observaciones y Confirmacion
-Observaciones o pedidos especiales (textarea, maximo 350 caracteres, con contador de
-caracteres visible).
-Acepta que BuenSabor se contacte para confirmar disponibilidad (checkbox obligatorio).
-Acepta los Terminos y Condiciones del servicio (checkbox obligatorio, con enlace a pagina
-ficticia).
-Acepta la Politica de Privacidad (checkbox obligatorio).
-Botones de Accion
-Boton principal "Enviar solicitud" (submit), centrado y con estilo destacado.
-Boton secundario "Limpiar" (reset).
-Enlace "Volver al inicio" que redirija a index.html.
-Requisitos de Estilo y Accesibilidad
-Los campos deben cambiar visualmente al recibir el foco (:focus): borde con color y sombra
-suave.
-Preparar las clases CSS "campo-error" (borde rojo) y "campo-ok" (borde verde) para ser
-aplicadas en la Etapa 3.
-Las cuatro secciones del formulario deben estar visualmente separadas: fondo diferente,
-borde redondeado o titulo de seccion destacado.
-El formulario debe estar centrado con un ancho maximo de 750 pixeles.
-Diseno responsivo: en pantallas de escritorio algunos campos pueden mostrarse en dos
-columnas; en dispositivos moviles todos los campos ocupan el ancho completo.
-Todos los campos deben tener su etiqueta <label> asociada correctamente. Los campos
-requeridos deben estar marcados con asterisco.
-Los grupos de radio buttons y checkboxes deben estar contenidos dentro de un elemento<fieldset> con su correspondiente <legend>.
-
-
-eso agregalo
-
-pero haz los cambios en la pagina web
+Programacion Web | Pagina 10
+Si el formulario pasa todas las validaciones:
+Ocultar el formulario.
+Mostrar una seccion de confirmacion con: tipo de solicitud, nombre del cliente, fecha y hora
+del evento, cantidad de comensales y numero de solicitud generado aleatoriamente con
+Math.random().
+Incluir un boton "Volver al inicio" y un boton "Nueva solicitud" que recargue el formulario. y recuerda que tienes que ir agregando los cambios que haces en la pagina web en el README.md
