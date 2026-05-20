@@ -26,3 +26,4 @@ Este proyecto contiene una landing page moderna para el restaurante y servicio d
   - Botones de acción: "Enviar solicitud" destacado, "Limpiar" reset, y enlace de "Volver al inicio" a `index.html`.
   - Estilo y accesibilidad: campos con foco visual definido, clases `campo-error` y `campo-ok` preparadas, formulario centrado con ancho máximo de 750px, diseño responsive, etiquetas `label` correctamente asociadas, y `fieldset`/`legend` para grupos de opciones.
 - Se implementó el formulario avanzado en `solicitud.html` con cuatro secciones, campos condicionales para catering, opciones de restricciones y bebidas, contadores de caracteres, confirmación de correo, botones de enviar/limpiar y enlace a `index.html`.
+- Se añadió `validaciones.js` para validar el formulario de `solicitud.html` según las reglas de Sección A-D, mostrar retroalimentación visual inmediata, sumarizar errores y presentar una pantalla de confirmación con número de solicitud.

@@ -31,6 +31,7 @@
       <p>Completa el formulario con los datos de tu evento y te contactaremos rápidamente para confirmar la reserva.</p>
     </div>
     <form id="requestForm" class="booking-form" novalidate>
+      <div id="validationSummary" class="validation-summary hidden" aria-live="polite"></div>
       <div class="form-section">
         <div class="form-section-header">
           <span class="eyebrow">Sección A</span>
@@ -239,6 +240,27 @@
 
       <p id="formMessage" class="form-message" aria-live="polite"></p>
     </form>
+
+    <section id="confirmationSection" class="section section--form hidden">
+      <div class="form-section">
+        <div class="form-section-header">
+          <span class="eyebrow">Confirmación</span>
+          <h3>Solicitud recibida</h3>
+          <p>Tu solicitud fue aceptada. Revisa los datos y el número de solicitud generado.</p>
+        </div>
+        <div class="confirmation-card">
+          <p><strong>Tipo de solicitud:</strong> <span id="confirmTipo"></span></p>
+          <p><strong>Nombre del cliente:</strong> <span id="confirmNombre"></span></p>
+          <p><strong>Fecha y hora:</strong> <span id="confirmFechaHora"></span></p>
+          <p><strong>Cantidad de comensales:</strong> <span id="confirmComensales"></span></p>
+          <p><strong>Número de solicitud:</strong> <span id="confirmNumero"></span></p>
+        </div>
+        <div class="booking-actions">
+          <a href="index.html" class="btn btn-secondary">Volver al inicio</a>
+          <button id="newRequestBtn" class="btn btn-primary" type="button">Nueva solicitud</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -267,5 +289,6 @@
   </footer>
 
   <script src="java.js"></script>
+  <script src="validaciones.js"></script>
 </body>
 </html>

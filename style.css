@@ -495,6 +495,41 @@ legend {
   min-height: 1.3rem;
 }
 
+.validation-summary {
+  background: rgba(255, 120, 120, 0.12);
+  border: 1px solid rgba(255, 120, 120, 0.35);
+  color: #ffb3b3;
+  padding: 1rem 1.2rem;
+  border-radius: 18px;
+  margin-bottom: 1.5rem;
+}
+
+.confirmation-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 1.8rem;
+  color: var(--muted);
+}
+
+.confirmation-card p {
+  margin: 0.9rem 0;
+}
+
+.text-warning {
+  color: #f4bd26;
+}
+
+.text-danger {
+  color: #ff7c7c;
+}
+
+.error-text {
+  color: #ff7c7c;
+  font-size: 0.92rem;
+  margin-top: 0.4rem;
+}
+
 .form-message-error {
   color: #ff7c7c;
 }
