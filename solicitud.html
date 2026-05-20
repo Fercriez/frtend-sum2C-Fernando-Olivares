@@ -30,39 +30,213 @@
       <h2>Reserva tu mesa o elige catering para tu evento</h2>
       <p>Completa el formulario con los datos de tu evento y te contactaremos rápidamente para confirmar la reserva.</p>
     </div>
-    <form id="requestForm" class="booking-form">
-      <div class="field-group">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
+    <form id="requestForm" class="booking-form" novalidate>
+      <div class="form-section">
+        <div class="form-section-header">
+          <span class="eyebrow">Sección A</span>
+          <h3>Tipo de solicitud y datos del evento</h3>
+          <p>Selecciona si deseas reserva en el salón o servicio de catering externo. Los campos adicionales aparecerán según tu elección.</p>
+        </div>
+
+        <fieldset class="field-group">
+          <legend>Tipo de solicitud <span class="required">*</span></legend>
+          <div class="radio-group">
+            <label><input type="radio" name="solicitudTipo" value="mesa" checked /> Reserva de mesa en el salón</label>
+            <label><input type="radio" name="solicitudTipo" value="catering" /> Servicio de catering externo</label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="fecha">Fecha del evento o reserva <span class="required">*</span></label>
+            <input type="date" id="fecha" name="fecha" />
+          </div>
+          <div class="field-group">
+            <label for="hora">Hora de inicio <span class="required">*</span></label>
+            <input type="time" id="hora" name="hora" />
+          </div>
+        </div>
+
+        <div class="field-row catering-dependent hidden">
+          <div class="field-group">
+            <label for="duracion">Duración estimada</label>
+            <select id="duracion" name="duracion">
+              <option value="1">1 hora</option>
+              <option value="2">2 horas</option>
+              <option value="3">3 horas</option>
+              <option value="4">4 horas</option>
+              <option value="5">Más de 4 horas</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="eventoNombre">Nombre o descripción del evento <span class="required">*</span></label>
+            <input type="text" id="eventoNombre" name="eventoNombre" placeholder="Cumpleaños de 50" />
+          </div>
+        </div>
+
+        <div class="field-row catering-dependent hidden">
+          <div class="field-group">
+            <label for="eventoTipo">Tipo de evento</label>
+            <select id="eventoTipo" name="eventoTipo">
+              <option value="Casamiento">Casamiento</option>
+              <option value="Cumpleanos">Cumpleaños</option>
+              <option value="Evento corporativo">Evento corporativo</option>
+              <option value="Desayuno o coffee break">Desayuno o coffee break</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="field-group hidden" id="eventoTipoOtroGroup">
+            <label for="eventoTipoOtro">Especifica otro tipo de evento <span class="required">*</span></label>
+            <input type="text" id="eventoTipoOtro" name="eventoTipoOtro" placeholder="Describe el evento" />
+          </div>
+        </div>
+
+        <div class="field-group catering-dependent hidden">
+          <label for="lugarEvento">Lugar del evento <span class="required">*</span></label>
+          <input type="text" id="lugarEvento" name="lugarEvento" placeholder="Dirección donde se realizará el servicio" />
+        </div>
       </div>
-      <div class="field-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required />
+
+      <div class="form-section">
+        <div class="form-section-header">
+          <span class="eyebrow">Sección B</span>
+          <h3>Datos de los comensales</h3>
+          <p>Indica cuántos asistentes habrá y si existen restricciones alimentarias o necesidad de menú infantil.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="adultos">Cantidad de adultos <span class="required">*</span></label>
+            <input type="number" id="adultos" name="adultos" min="1" max="200" value="1" />
+          </div>
+          <div class="field-group">
+            <label for="menores">Cantidad de menores</label>
+            <input type="number" id="menores" name="menores" min="0" max="50" value="0" />
+          </div>
+        </div>
+
+        <fieldset class="field-group">
+          <legend>Restricciones alimentarias</legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="restricciones" value="Vegetarianos" /> Vegetarianos</label>
+            <label><input type="checkbox" name="restricciones" value="Veganos" /> Veganos</label>
+            <label><input type="checkbox" name="restricciones" value="Sin TACC" /> Sin TACC (celíacos)</label>
+            <label><input type="checkbox" name="restricciones" value="Sin lactosa" /> Sin lactosa</label>
+            <label><input type="checkbox" name="restricciones" value="Alergias a frutos secos" /> Alergias a frutos secos</label>
+            <label><input type="checkbox" id="restriccionesOtras" name="restricciones" value="Otras" /> Otras</label>
+          </div>
+        </fieldset>
+
+        <div class="field-group hidden" id="otrasRestriccionesGroup">
+          <label for="otrasRestricciones">Detalle otras restricciones</label>
+          <textarea id="otrasRestricciones" name="otrasRestricciones" maxlength="200" placeholder="Describe las restricciones"></textarea>
+          <p class="char-count"><span id="otrasRestriccionesCount">0</span>/200</p>
+        </div>
+
+        <fieldset class="field-group">
+          <legend>Menú infantil</legend>
+          <label class="checkbox-inline"><input type="checkbox" id="menuInfantil" name="menuInfantil" /> El grupo necesita menú infantil</label>
+        </fieldset>
+
+        <div class="field-group hidden" id="menuInfantilCantidadGroup">
+          <label for="menuInfantilCantidad">Cantidad de menús infantiles</label>
+          <input type="number" id="menuInfantilCantidad" name="menuInfantilCantidad" min="1" max="50" value="1" />
+        </div>
       </div>
-      <div class="field-row">
+
+      <div class="form-section">
+        <div class="form-section-header">
+          <span class="eyebrow">Sección C</span>
+          <h3>Datos del cliente y preferencias</h3>
+          <p>Completa tus datos de contacto y tus preferencias de menú y bebidas.</p>
+        </div>
+
         <div class="field-group">
-          <label for="tipo">Tipo de servicio</label>
-          <select id="tipo" name="tipo" required>
-            <option value="mesa">Reserva de mesa</option>
-            <option value="catering">Servicio de catering</option>
-          </select>
+          <label for="nombre">Nombre completo <span class="required">*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" />
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="email">Correo electrónico <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" />
+          </div>
+          <div class="field-group">
+            <label for="confirmEmail">Confirmar correo electrónico <span class="required">*</span></label>
+            <input type="email" id="confirmEmail" name="confirmEmail" placeholder="correo@ejemplo.com" />
+          </div>
         </div>
         <div class="field-group">
-          <label for="fecha">Fecha</label>
-          <input type="date" id="fecha" name="fecha" required />
+          <label for="telefono">Teléfono de contacto <span class="required">*</span></label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+54 11 5555 1234" />
         </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="menuPreferido">Tipo de menú preferido</label>
+            <select id="menuPreferido" name="menuPreferido">
+              <option value="Menu degustacion">Menú degustación</option>
+              <option value="Menu clasico">Menú clásico</option>
+              <option value="Menu infantil predominante">Menú infantil predominante</option>
+              <option value="A definir con el chef">A definir con el chef</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="conocio">Cómo nos conoció</label>
+            <select id="conocio" name="conocio">
+              <option value="Redes sociales">Redes sociales</option>
+              <option value="Recomendacion">Recomendación</option>
+              <option value="Busqueda web">Búsqueda web</option>
+              <option value="Fue cliente antes">Fue cliente antes</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="field-group">
+          <legend>Bebidas incluidas <span class="required">*</span></legend>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="bebidas" value="Agua" /> Agua</label>
+            <label><input type="checkbox" name="bebidas" value="Gaseosas" /> Gaseosas</label>
+            <label><input type="checkbox" name="bebidas" value="Vinos" /> Vinos</label>
+            <label><input type="checkbox" name="bebidas" value="Champagne" /> Champagne</label>
+            <label><input type="checkbox" name="bebidas" value="Sin alcohol" /> Sin alcohol</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field-group catering-dependent hidden">
+          <legend>Servicios adicionales</legend>
+          <label class="checkbox-inline"><input type="checkbox" id="servicioMozos" name="servicioMozos" /> Necesita servicio de mozos</label>
+          <label class="checkbox-inline"><input type="checkbox" id="mobiliario" name="mobiliario" /> Necesita mobiliario: mesas y sillas</label>
+        </fieldset>
       </div>
-      <div class="field-row">
-        <div class="field-group">
-          <label for="personas">Personas / invitados</label>
-          <input type="number" id="personas" name="personas" min="1" value="2" required />
+
+      <div class="form-section">
+        <div class="form-section-header">
+          <span class="eyebrow">Sección D</span>
+          <h3>Observaciones y confirmación</h3>
+          <p>Comparte pedidos especiales y confirma que aceptas contacto y políticas.</p>
         </div>
+
         <div class="field-group">
-          <label for="mensaje">Detalles / solicitud</label>
-          <input type="text" id="mensaje" name="mensaje" placeholder="Celebración, alergias, menú especial" />
+          <label for="observaciones">Observaciones o pedidos especiales</label>
+          <textarea id="observaciones" name="observaciones" maxlength="350" placeholder="Describe pedidos especiales o necesidades adicionales"></textarea>
+          <p class="char-count"><span id="observacionesCount">0</span>/350</p>
         </div>
+
+        <fieldset class="field-group">
+          <legend>Confirmación</legend>
+          <label class="checkbox-inline"><input type="checkbox" id="aceptaContacto" name="aceptaContacto" /> Acepta que BuenSabor se contacte para confirmar disponibilidad <span class="required">*</span></label>
+          <label class="checkbox-inline"><input type="checkbox" id="aceptaTerminos" name="aceptaTerminos" /> Acepta los <a href="#" target="_blank">Términos y Condiciones</a> del servicio <span class="required">*</span></label>
+          <label class="checkbox-inline"><input type="checkbox" id="aceptaPrivacidad" name="aceptaPrivacidad" /> Acepta la Política de Privacidad <span class="required">*</span></label>
+        </fieldset>
       </div>
-      <button type="submit" class="btn btn-primary btn-full">Enviar solicitud</button>
+
+      <div class="booking-actions">
+        <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+        <button type="reset" class="btn btn-secondary">Limpiar</button>
+        <a href="index.html" class="btn btn-secondary">Volver al inicio</a>
+      </div>
+
       <p id="formMessage" class="form-message" aria-live="polite"></p>
     </form>
   </main>
